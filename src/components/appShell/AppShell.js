@@ -4,10 +4,9 @@ import Footer from "../common/Footer/Footer";
 import "./AppShell.scss";
 
 const AppShell = props => (
-  <div className="appShell">
+  <div className="AppShell">
     <Header />
-    <h1 className="redc">REDD</h1>
-    {props.children}
+    <div className="content-wrap">{props.children}</div>
     <Footer />
   </div>
 );

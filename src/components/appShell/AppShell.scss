@@ -1,8 +1,10 @@
-.appShell {
+.AppShell {
   background-color: red;
   text-align: center;
+  position: relative;
+  min-height: 100vh;
 }
 
-.redc {
-  color: red;
+.content-wrap {
+  padding-bottom: 2.5rem;
 }
