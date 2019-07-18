@@ -1,18 +1,12 @@
 import React from "react";
-import { BrowserRouter, NavLink } from "react-router-dom";
-import { withRouter } from "react-router";
+import Menu from "./Menu/Menu";
+import "./Header.scss";
 
 const Header = () => {
   return (
-    <nav>
-      <NavLink to="/" exact>
-        Home
-      </NavLink>
-      {" | "}
-      <NavLink to="/courses">Courses</NavLink>
-      {" | "}
-      <NavLink to="/about">About</NavLink>
-    </nav>
+    <div className="Header">
+      <Menu />
+    </div>
   );
 };
 
