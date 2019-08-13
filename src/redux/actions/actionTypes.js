@@ -1,0 +1,1 @@
+export const CREATE_CHARACTER = "CREATE_CHARACTER";
