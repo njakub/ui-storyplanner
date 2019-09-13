@@ -1,67 +1,54 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import * as characterActions from "../../redux/actions/characterActions";
+import * as projectActions from "../../redux/actions/projectActions";
 import { bindActionCreators } from "redux";
+import CharacterList from "./CharacterList";
 
 const CharacterPage = props => {
-  const [character, setCharacter] = useState({
-    firstName: "",
-    secondName: ""
-  });
-
-  const updateField = event => {
-    setCharacter({
-      ...character,
-      [event.target.name]: event.target.value
+  useEffect(() => {
+    props.actions.loadCharacters().catch(error => {
+      alert("Loading Characters Failed: " + error);
     });
-  };
+    props.actions.loadProjects().catch(error => {
+      alert("Loading Projects Failed: " + error);
+    });
+  }, []);
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    props.actions.createCharacter(character);
-    // console.log(character);
-  };
-
-  return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <h2>Characters</h2>
-        <h3>Add Character</h3>
-        <label>
-          First Name:
-          <input
-            type="text"
-            onChange={updateField}
-            value={character.name}
-            name="firstName"
-          />
-        </label>
-        <label>
-          Second Name:
-          <input
-            type="text"
-            onChange={updateField}
-            value={character.name}
-            name="secondName"
-          />
-        </label>
-        <input type="submit" value="Save" />
-        {props.characters.map(character => (
-          <div key={character.firstName}>{character.firstName}</div>
-        ))}
-      </form>
-    </div>
-  );
+  return <CharacterList characters={props.characters} />;
 };
 
 const mapStateToProps = state => {
-  return { characters: state.characters };
+  return {
+    characters: state.characters,
+    // state.projects.length === 0
+    //   ? []
+    //   : state.characters.map(character => {
+    //       return {
+    //         ...character,
+    //         projectName: state.projects.find(p => p.id === character.id).name
+    //       };
+    //     }),
+    projects: state.projects
+  };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    actions: bindActionCreators(characterActions, dispatch)
+    actions: {
+      loadCharacters: bindActionCreators(
+        characterActions.loadCharacters,
+        dispatch
+      ),
+      loadProjects: bindActionCreators(projectActions.loadProjects, dispatch)
+    }
   };
+};
+
+CharacterPage.propTypes = {
+  characters: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired
 };
 
 export default connect(
