@@ -4,8 +4,8 @@ import HomePage from "./home/HomePage";
 import AboutPage from "./about/AboutPage";
 import PageNotFound from "./PageNotFound";
 import AppShell from "./appShell/AppShell";
-import CharacterPage from "./courses/CharacterPage";
-import CharacterAddPage from "./courses/CharacterCreate";
+import CharacterPage from "./character/CharacterPage";
+import CharacterAddPage from "./character/CharacterCreate";
 import InvoicePage from "./invoice/Invoice";
 import "./App.scss";
 
