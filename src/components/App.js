@@ -5,7 +5,8 @@ import AboutPage from "./about/AboutPage";
 import PageNotFound from "./PageNotFound";
 import AppShell from "./appShell/AppShell";
 import CharacterPage from "./character/CharacterPage";
-import CharacterAddPage from "./character/CharacterCreate";
+import CharacterAdd from "./character/characterAdd/CharacterAdd";
+import StoryProjectViewAll from "./storyProject/StoryProjectViewAll";
 import InvoicePage from "./invoice/Invoice";
 import "./App.scss";
 
@@ -17,7 +18,8 @@ function App() {
           <Route exact path="/" component={HomePage} />
           <Route path="/about" component={AboutPage} />
           <Route path="/characters/view" component={CharacterPage} />
-          <Route path="/characters/add" component={CharacterAddPage} />
+          <Route path="/characters/add" component={CharacterAdd} />
+          <Route path="/projects/view-all" component={StoryProjectViewAll} />
           <Route path="/invoice" component={InvoicePage} />
           <Route component={PageNotFound} />
         </Switch>

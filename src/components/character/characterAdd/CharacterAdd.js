@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import * as characterActions from "../../redux/actions/characterActions";
+import * as characterActions from "../../../redux/actions/characterActions";
 import { bindActionCreators } from "redux";
 import { Formik, ErrorMessage, Field } from "formik";
 import * as Yup from "yup";
 
-const EditCharacterPage = props => {
+const CharacterAdd = props => {
   const [character, setCharacter] = useState({
     firstName: "",
     secondName: ""
@@ -126,7 +126,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(EditCharacterPage);
+export default connect(mapStateToProps, mapDispatchToProps)(CharacterAdd);

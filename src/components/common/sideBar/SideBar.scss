@@ -1,0 +1,68 @@
+#sidebar-wrapper {
+  color: white;
+  min-height: 100vh;
+  -webkit-transition: margin 0.25s ease-out;
+  -moz-transition: margin 0.25s ease-out;
+  -o-transition: margin 0.25s ease-out;
+  transition: margin 0.25s ease-out;
+  background-image: linear-gradient(rgba(27, 1, 88, 0.1), rgba(23, 0, 126, 0.1)),
+    url("sideBarBooks2.png");
+  // background-size: 240px 940px;
+  background-size: auto;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.42),
+    0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+  width: 20rem;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 20rem;
+  .list-group-item {
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    color: white;
+    border-radius: 5px;
+    margin-top: 5px;
+  }
+
+  .list-group-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 5px;
+  }
+
+  .list-group-item:active {
+    background-color: #00acc1;
+  }
+}
+
+.sidebar-heading {
+  border-bottom: 1px solid #606669;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  div {
+    margin-left: 1rem;
+    font-size: 25px;
+  }
+}
+
+.sidebar-content {
+  width: 80%;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+}

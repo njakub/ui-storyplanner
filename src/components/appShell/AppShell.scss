@@ -1,12 +1,52 @@
-.AppShell {
-  background-color: #3aafa9;
-  text-align: center;
-  position: relative;
-  min-height: 100vh;
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+#content {
+  width: 100%;
+  height: 100%;
 }
 
-.content-wrap {
-  padding-bottom: 2.5rem;
-  margin-left: 12rem;
-  margin-right: 12rem;
+body {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  background: #eeeeee;
+  overflow-x: hidden;
+}
+
+p {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1em;
+  font-weight: 300;
+  line-height: 1.7em;
+  color: #999;
+}
+
+a,
+a:hover,
+a:focus {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+#content-container {
+  padding-top: 3.5rem;
+  margin-left: 3.5rem;
+  min-height: 100vh;
+  overflow: auto;
+  width: calc(100% - 8rem);
+}
+
+#page-content-wrapper {
+  min-height: 100%;
+}
+
+@media (min-width: 768px) {
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+    margin-left: 20rem;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -20rem;
+  }
 }

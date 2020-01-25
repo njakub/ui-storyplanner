@@ -51,7 +51,4 @@ CharacterPage.propTypes = {
   actions: PropTypes.object.isRequired
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CharacterPage);
+export default connect(mapStateToProps, mapDispatchToProps)(CharacterPage);

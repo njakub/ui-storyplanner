@@ -1,7 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import { NavDropdown, Navbar, Nav } from "react-bootstrap";
-import "./Menu.scss";
 
 const Menu = () => {
   return (
