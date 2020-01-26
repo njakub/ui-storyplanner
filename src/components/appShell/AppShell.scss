@@ -29,10 +29,13 @@ a:focus {
 
 #content-container {
   padding-top: 3.5rem;
-  margin-left: 3.5rem;
+  // margin-left: 20rem;
   min-height: 100vh;
   overflow: auto;
-  width: calc(100% - 8rem);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  // align-items: center;
 }
 
 #page-content-wrapper {
@@ -43,10 +46,10 @@ a:focus {
   #page-content-wrapper {
     min-width: 0;
     width: 100%;
-    margin-left: 20rem;
+    margin-left: 16rem;
   }
 
   #wrapper.toggled #sidebar-wrapper {
-    margin-left: -20rem;
+    margin-left: -16rem;
   }
 }

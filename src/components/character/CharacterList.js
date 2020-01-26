@@ -17,10 +17,10 @@ const CharacterList = props => (
       <tbody>
         {props.characters.map(character => (
           <tr>
-              <td>{character.actorCharacterId}</td>
+            <td>{character.actorCharacterId}</td>
             <td>{character.firstName}</td>
             <td>{character.secondName}</td>
-              <td>{character.dob}</td>
+            <td>{character.dob}</td>
           </tr>
         ))}
       </tbody>

@@ -1,0 +1,58 @@
+$orange: #fc9209;
+$green: #5fb663;
+$blue: #00acc1;
+$red: #eb4945;
+
+#card {
+  width: 21rem;
+  height: 8rem;
+  background-color: #ffffff;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card-icon {
+  // background-color: red;
+  width: 5rem;
+  height: 5rem;
+  margin-top: -20px;
+  margin-left: 15px;
+  padding: 15px;
+  border-radius: 3px;
+  img {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+.card-icon-orange {
+  background-color: $orange;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px $orange;
+}
+
+.card-icon-green {
+  background-color: $green;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px $green;
+}
+
+.card-icon-blue {
+  background-color: $blue;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px $blue;
+}
+
+.card-icon-red {
+  background-color: $red;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px $red;
+}
+
+.card-content {
+  margin-right: 15px;
+  margin-top: 15px;
+  color: #999999;
+  h3 {
+    color: black;
+  }
+}

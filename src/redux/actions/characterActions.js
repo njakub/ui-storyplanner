@@ -24,8 +24,11 @@ export function loadCharacters() {
 
 export function saveCharacter(character) {
   return function(dispatch) {
-    return charaterApi.saveCharacter(character).catch(error => {
-      throw error;
-    });
+    return charaterApi
+      .saveCharacter(character)
+      .then(resp => {})
+      .catch(error => {
+        throw error;
+      });
   };
 }
