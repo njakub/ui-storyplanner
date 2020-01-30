@@ -1,16 +1,24 @@
 import React, { useState } from "react";
 import { Formik, Form, ErrorMessage, Field } from "formik";
 import * as Yup from "yup";
-import PlainCard from "../../../common/PlainCard/PlainCard";
+import PlainCard from "../../common/PlainCard/PlainCard";
 import "./BasicCharacterInformation.scss";
-import TextInput from "../../../common/textInput/TextInput";
-import Button from "../../../common/Button/Button";
+import TextInput from "../../common/textInput/TextInput";
+import Button from "../../common/Button/Button";
 
-const BasicCharacterInformation = ({ handleChange, onSubmit }) => {
+const BasicCharacterInformation = ({
+  handleChange,
+  onSubmit,
+  initialValues = {}
+}) => {
   return (
     <div className="basic-information-card">
       <PlainCard title="Basic Information">
-        <Formik onSubmit={async values => onSubmit(values)}>
+        <Formik
+          enableReinitialize
+          onSubmit={async values => onSubmit(values)}
+          initialValues={initialValues}
+        >
           {({ isSubmitting, values }) => (
             <Form>
               <Field

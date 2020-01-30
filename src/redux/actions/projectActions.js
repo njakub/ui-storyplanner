@@ -17,3 +17,14 @@ export function loadProjects() {
       });
   };
 }
+
+export function saveProject(project) {
+  return function(dispatch) {
+    return projectApi
+      .saveProject(project)
+      .then(resp => {})
+      .catch(error => {
+        throw error;
+      });
+  };
+}

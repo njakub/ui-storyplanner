@@ -26,6 +26,17 @@ export function saveCharacter(character) {
   return function(dispatch) {
     return charaterApi
       .saveCharacter(character)
+      .then(dispatch(createCharacter(character)))
+      .catch(error => {
+        throw error;
+      });
+  };
+}
+
+export function saveAppearance(appearance) {
+  return function(dispatch) {
+    return charaterApi
+      .saveAppearance(appearance)
       .then(resp => {})
       .catch(error => {
         throw error;

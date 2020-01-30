@@ -4,50 +4,26 @@ import * as characterActions from "../../../redux/actions/characterActions";
 import { bindActionCreators } from "redux";
 import { Formik, ErrorMessage, Field } from "formik";
 import * as Yup from "yup";
-import PlainCard from "../../common/PlainCard/PlainCard";
-import BasicCharacterInformation from "./BasicCharacterInformation/BasicCharacterInformation";
-import AppearanceCharacterInformation from "./AppearanceCharacterInformation/AppearanceCharacterInformation";
-import Button from "../../common/Button/Button";
+import BasicCharacterInformation from "../BasicCharacterInformation/BasicCharacterInformation";
+import { useHistory } from "react-router-dom";
 import "./CharacterAdd.scss";
 
-const CharacterAdd = props => {
-  const [basicFormValues, setBasicFormValues] = React.useState({});
-  const [appearanceFormValues, setAppearanceFormValues] = React.useState({});
-
-  function handleBasicFormChange(e) {
-    const targetEl = e.target;
-    const fieldName = targetEl.name;
-    setBasicFormValues({
-      ...basicFormValues,
-      [fieldName]: targetEl.value
+const CharacterAdd = ({ actions }) => {
+  const history = useHistory();
+  const onSubmitCharacter = async values => {
+    actions.saveCharacter(values).then(async resp => {
+      await actions.loadCharacters();
+      history.push({
+        pathname: "/characters/edit",
+        state: { id: resp.actorCharacterId }
+      });
     });
-  }
-
-  function handleAppearanceFormChange(e) {
-    const targetEl = e.target;
-    const fieldName = targetEl.name;
-    setAppearanceFormValues({
-      ...appearanceFormValues,
-      [fieldName]: targetEl.value
-    });
-  }
-
-  const onSubmit = () => {
-    setBasicFormValues({
-      ...basicFormValues,
-      characterAppearanceValues: appearanceFormValues
-    });
-    props.actions.saveCharacter(basicFormValues);
   };
 
   return (
     <React.Fragment>
       <div className="add-character">
-        <BasicCharacterInformation onChange={handleBasicFormChange} />
-        <AppearanceCharacterInformation onChange={handleAppearanceFormChange} />
-        <Button type="submit" color="primary" onClick={onSubmit}>
-          Submit
-        </Button>
+        <BasicCharacterInformation onSubmit={onSubmitCharacter} />
       </div>
     </React.Fragment>
   );

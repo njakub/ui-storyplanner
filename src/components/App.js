@@ -1,13 +1,13 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useLocation } from "react-router-dom";
 import HomePage from "./home/HomePage";
 import AboutPage from "./about/AboutPage";
 import PageNotFound from "./PageNotFound";
 import AppShell from "./appShell/AppShell";
-import CharacterPage from "./character/CharacterPage";
+import CharacterEdit from "./character/characterEdit/CharacterEdit";
 import CharacterAdd from "./character/characterAdd/CharacterAdd";
-import StoryProjectViewAll from "./storyProject/StoryProjectViewAll";
-import InvoicePage from "./invoice/Invoice";
+import CharacterViewAll from "./character/characterViewAll/CharacterViewAll";
+import Projects from "./project/projectAdd/ProjectAdd";
 import "./App.scss";
 
 function App() {
@@ -16,11 +16,11 @@ function App() {
       <div className="container-fluid App">
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route path="/about" component={AboutPage} />
-          <Route path="/characters/view" component={CharacterPage} />
-          <Route path="/characters/add" component={CharacterAdd} />
-          <Route path="/projects/view-all" component={StoryProjectViewAll} />
-          <Route path="/invoice" component={InvoicePage} />
+          <Route exact path="/about" component={AboutPage} />
+          <Route exact path="/characters/view" component={CharacterViewAll} />
+          <Route exact path="/characters/add" component={CharacterAdd} />
+          <Route exact path="/characters/edit" component={CharacterEdit} />
+          <Route exact path="/projects" component={Projects} />
           <Route component={PageNotFound} />
         </Switch>
       </div>

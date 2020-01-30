@@ -1,8 +1,78 @@
 import React from "react";
 import "./SideBar.scss";
-import { NavDropdown, Navbar, Nav } from "react-bootstrap";
+import { NavLink, IndexLink } from "react-router-dom";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import ExpandLess from "@material-ui/icons/ExpandLess";
+import ExpandMore from "@material-ui/icons/ExpandMore";
+import Collapse from "@material-ui/core/Collapse";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    width: "100%",
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper
+  },
+  listGroupItem: {
+    backgroundColor: "rgba(0, 0, 0, 0)",
+    border: "none",
+    color: "white",
+    borderRadius: "5px",
+    marginTop: "5px",
+    "&:hover": {
+      backgroundColor: "rgba(255, 255, 255, 0.2)",
+      color: "white",
+      borderRadius: "5px"
+    }
+  },
+  nested: {
+    paddingLeft: theme.spacing(4),
+    "&:hover": {
+      backgroundColor: "rgba(255, 255, 255, 0.2)",
+      color: "white",
+      borderRadius: "5px"
+    }
+  },
+  activeLink: {
+    backgroundColor: "#00acc1",
+    borderRadius: "5px",
+    color: "white",
+    // boxShadow: "4px 4px 5px 0px #00acc1",
+    "&:hover": {
+      backgroundColor: "#00acc1",
+      color: "white",
+      borderRadius: "5px"
+    }
+  }
+}));
 
 const SideBar = () => {
+  const classes = useStyles();
+
+  const [openCharacters, setOpenCharacters] = React.useState(false);
+  const [openProjects, setOpenProjects] = React.useState(false);
+
+  function ListItemLink(props) {
+    return (
+      <ListItem
+        button
+        component={NavLink}
+        {...props}
+        activeClassName={classes.activeLink}
+      />
+    );
+  }
+  const handleClickCharacters = () => {
+    setOpenCharacters(!openCharacters);
+  };
+
+  const handleClickProjects = () => {
+    setOpenProjects(!openProjects);
+  };
+
   return (
     <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="sidebar-content">
@@ -22,30 +92,42 @@ const SideBar = () => {
           </svg>
           <div>TaleMate</div>
         </div>
-        <div class="list-group list-group-flush">
-          <Nav className="mr-auto">
-            <Nav.Link
-              className="list-group-item list-group-item-action"
-              href="/"
-            >
-              Dashboard
-            </Nav.Link>
-            <Nav.Link
-              className="list-group-item list-group-item-action"
-              href="/about"
-            >
-              About
-            </Nav.Link>
-            <NavDropdown
-              className="list-group-item list-group-item-action"
-              title="Characters"
-              id="collasible-nav-dropdown"
-            >
-              <NavDropdown.Item href="/characters/view">View</NavDropdown.Item>
-              <NavDropdown.Item href="/characters/add">Add</NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        </div>
+        <List component="nav" aria-label="main mailbox folders">
+          <ListItemLink exact className={classes.listGroupItem} to="/">
+            <ListItemText primary="Dashboard" />
+          </ListItemLink>
+          <ListItemLink className={classes.listGroupItem} to="/about">
+            <ListItemText primary="About" />
+          </ListItemLink>
+          <ListItem button onClick={handleClickProjects}>
+            <ListItemText primary="Projects" />
+            {openProjects ? <ExpandLess /> : <ExpandMore />}
+          </ListItem>
+          <Collapse in={openProjects} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItemLink className={classes.nested} to="/projects/view">
+                <ListItemText primary="View Projects" />
+              </ListItemLink>
+              <ListItemLink className={classes.nested} to="/projects/add">
+                <ListItemText primary="Add Project" />
+              </ListItemLink>
+            </List>
+          </Collapse>
+          <ListItem button onClick={handleClickCharacters}>
+            <ListItemText primary="Characters" />
+            {openCharacters ? <ExpandLess /> : <ExpandMore />}
+          </ListItem>
+          <Collapse in={openCharacters} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItemLink className={classes.nested} to="/characters/view">
+                <ListItemText primary="View Characters" />
+              </ListItemLink>
+              <ListItemLink className={classes.nested} to="/characters/add">
+                <ListItemText primary="Add Character" />
+              </ListItemLink>
+            </List>
+          </Collapse>
+        </List>
       </div>
     </div>
   );
