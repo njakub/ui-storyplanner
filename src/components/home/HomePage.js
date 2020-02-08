@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import InfoCard from "../common/InfoCard/InfoCard";
-import "./HomePage.scss";
+import InfoCard from "../common/infoCard/infoCard";
+import "./homePage.scss";
 import Characters from "./characters.png";
 import Books from "./books.png";
 import Character from "./character.png";

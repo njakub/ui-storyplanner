@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Formik, Form, ErrorMessage, Field } from "formik";
 import * as Yup from "yup";
-import PlainCard from "../../common/PlainCard/PlainCard";
-import "./BasicCharacterInformation.scss";
-import TextInput from "../../common/textInput/TextInput";
-import Button from "../../common/Button/Button";
+import PlainCard from "../../common/plainCard/plainCard";
+import "./basicCharacterInformation.scss";
+import TextInput from "../../common/textInput/textInput";
+import Button from "../../common/button/button";
 
 const BasicCharacterInformation = ({
   handleChange,

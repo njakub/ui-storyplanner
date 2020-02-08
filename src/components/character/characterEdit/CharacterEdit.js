@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import * as characterActions from "../../../redux/actions/characterActions";
 import { bindActionCreators } from "redux";
-import AppearanceCharacterInformation from "../AppearanceCharacterInformation/AppearanceCharacterInformation";
-import BasicCharacterInformation from "../BasicCharacterInformation/BasicCharacterInformation";
+import AppearanceCharacterInformation from "../appearanceCharacterInformation/appearanceCharacterInformation";
+import BasicCharacterInformation from "../basicCharacterInformation/basicCharacterInformation";
 
 const CharacterEdit = ({ actions, location, characters }) => {
   const [character, setCharacter] = React.useState({});

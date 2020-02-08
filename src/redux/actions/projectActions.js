@@ -5,6 +5,10 @@ export function loadProjectsSuccess(projects) {
   return { type: types.LOAD_PROJECTS_SUCCESS, projects };
 }
 
+export function loadProjectSuccess(project) {
+  return { type: types.LOAD_PROJECT, project };
+}
+
 export function loadProjects() {
   return function(dispatch) {
     return projectApi
@@ -15,6 +19,16 @@ export function loadProjects() {
       .catch(error => {
         throw error;
       });
+  };
+}
+
+export function loadProject(projectId) {
+  return function(dispatch, getState) {
+    const { projects } = getState();
+    let project = projects.projects.find(
+      element => element.storyProjectId === projectId
+    );
+    return dispatch(loadProjectSuccess(project));
   };
 }
 

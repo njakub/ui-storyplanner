@@ -1,5 +1,5 @@
 import React from "react";
-import "./PlainCard.scss";
+import "./plainCard.scss";
 
 const PlainCard = ({ children, title }) => {
   return (

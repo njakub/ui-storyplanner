@@ -1,5 +1,5 @@
 import React from "react";
-import "./Table.scss";
+import "./table.scss";
 import { Table as BootstrapTable } from "react-bootstrap";
 
 const Table = props => {

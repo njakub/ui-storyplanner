@@ -4,9 +4,9 @@ import * as characterActions from "../../../redux/actions/characterActions";
 import { bindActionCreators } from "redux";
 import { Formik, ErrorMessage, Field } from "formik";
 import * as Yup from "yup";
-import BasicCharacterInformation from "../BasicCharacterInformation/BasicCharacterInformation";
+import BasicCharacterInformation from "../basicCharacterInformation/basicCharacterInformation";
 import { useHistory } from "react-router-dom";
-import "./CharacterAdd.scss";
+import "./characterAdd.scss";
 
 const CharacterAdd = ({ actions }) => {
   const history = useHistory();

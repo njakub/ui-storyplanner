@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import Table from "../../common/Table/Table";
+import Table from "../../common/table/table";
 import { connect } from "react-redux";
 import * as characterActions from "../../../redux/actions/characterActions";
 import * as projectActions from "../../../redux/actions/projectActions";
 import { bindActionCreators } from "redux";
-import Button from "../../common/Button/Button";
+import Button from "../../common/button/button";
 import { NavLink } from "react-router-dom";
 
 const CharacterList = props => {

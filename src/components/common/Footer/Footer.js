@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "./Footer.scss";
+import "./footer.scss";
 
 const Footer = props => (
   <div id="Footer">

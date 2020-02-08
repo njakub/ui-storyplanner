@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import * as projectActions from "../../../redux/actions/projectActions";
 import { bindActionCreators } from "redux";
-import Button from "../../common/Button/Button";
-import TextInput from "../../common/textInput/TextInput";
+import Button from "../../common/button/button";
+import TextInput from "../../common/textInput/textInput";
 import { Formik, Form, ErrorMessage, Field } from "formik";
-import PlainCard from "../../common/PlainCard/PlainCard";
+import PlainCard from "../../common/plainCard/plainCard";
 
 const ProjectAdd = props => {
   const onProjectSubmit = async values => {

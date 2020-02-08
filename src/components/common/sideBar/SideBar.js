@@ -1,5 +1,5 @@
 import React from "react";
-import "./SideBar.scss";
+import "./sideBar.scss";
 import { NavLink, IndexLink } from "react-router-dom";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -9,6 +9,7 @@ import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
 import { makeStyles } from "@material-ui/core/styles";
+import { connect } from "react-redux";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -46,10 +47,21 @@ const useStyles = makeStyles(theme => ({
       color: "white",
       borderRadius: "5px"
     }
+  },
+  seperator: {
+    borderTop: "1px solid #606669"
+  },
+  hidden: {
+    visibility: "hidden",
+    borderTop: "1px solid #606669"
+  },
+  show: {
+    visibility: "show",
+    borderTop: "1px solid #606669"
   }
 }));
 
-const SideBar = () => {
+const SideBar = ({ showProjectMenu, loadedProjectName }) => {
   const classes = useStyles();
 
   const [openCharacters, setOpenCharacters] = React.useState(false);
@@ -96,23 +108,6 @@ const SideBar = () => {
           <ListItemLink exact className={classes.listGroupItem} to="/">
             <ListItemText primary="Dashboard" />
           </ListItemLink>
-          <ListItemLink className={classes.listGroupItem} to="/about">
-            <ListItemText primary="About" />
-          </ListItemLink>
-          <ListItem button onClick={handleClickProjects}>
-            <ListItemText primary="Projects" />
-            {openProjects ? <ExpandLess /> : <ExpandMore />}
-          </ListItem>
-          <Collapse in={openProjects} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItemLink className={classes.nested} to="/projects/view">
-                <ListItemText primary="View Projects" />
-              </ListItemLink>
-              <ListItemLink className={classes.nested} to="/projects/add">
-                <ListItemText primary="Add Project" />
-              </ListItemLink>
-            </List>
-          </Collapse>
           <ListItem button onClick={handleClickCharacters}>
             <ListItemText primary="Characters" />
             {openCharacters ? <ExpandLess /> : <ExpandMore />}
@@ -127,10 +122,44 @@ const SideBar = () => {
               </ListItemLink>
             </List>
           </Collapse>
+          <ListItem button onClick={handleClickProjects}>
+            <ListItemText primary="Projects" />
+            {openProjects ? <ExpandLess /> : <ExpandMore />}
+          </ListItem>
+          <Collapse in={openProjects} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItemLink className={classes.nested} to="/projects/view-all">
+                <ListItemText primary="View Projects" />
+              </ListItemLink>
+              <ListItemLink className={classes.nested} to="/projects/add">
+                <ListItemText primary="Add Project" />
+              </ListItemLink>
+            </List>
+          </Collapse>
+        </List>
+        <List
+          component="nav"
+          aria-label="main mailbox folders"
+          className={showProjectMenu ? classes.show : classes.hidden}
+        >
+          <ListItemLink
+            exact
+            className={classes.listGroupItem}
+            to="/projects/view"
+          >
+            <ListItemText primary={loadedProjectName} />
+          </ListItemLink>
         </List>
       </div>
     </div>
   );
 };
 
-export default SideBar;
+const mapStateToProps = state => {
+  return {
+    showProjectMenu: state.projects.showProjectMenu,
+    loadedProjectName: state.projects.loadedProject.storyProjectName
+  };
+};
+
+export default connect(mapStateToProps)(SideBar);

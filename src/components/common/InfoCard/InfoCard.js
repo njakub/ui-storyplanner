@@ -1,5 +1,5 @@
 import React from "react";
-import "./InfoCard.scss";
+import "./infoCard.scss";
 
 const InfoCard = ({ icon, children, iconColor, title, information }) => {
   return (
